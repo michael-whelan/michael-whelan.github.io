@@ -1,16 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
-import { SiteLayout } from "../components/SiteLayout";
+import { SiteLayout } from "../components/templates/SiteLayout";
+import { PageHeading } from "../components/atoms/Heading";
+import { ProjectRow, type Project } from "../components/molecules/ProjectCard";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Projects — Michael Whelan" },
-      {
-        name: "description",
-        content: "Things I've built, shipped, and continue to work on.",
-      },
+      { name: "description", content: "Things I've built, shipped, and continue to work on." },
       { property: "og:title", content: "Projects — Michael Whelan" },
       {
         property: "og:description",
@@ -23,14 +21,7 @@ export const Route = createFileRoute("/projects")({
 
 type Category = "All" | "Product" | "Experiment" | "Open Source";
 
-const projects: {
-  name: string;
-  description: string;
-  tags: string[];
-  category: Category;
-  liveHref?: string;
-  githubHref?: string;
-}[] = [
+const projects: (Project & { category: Category })[] = [
   {
     name: "Opinion8",
     description:
@@ -64,12 +55,7 @@ function ProjectsPage() {
 
   return (
     <SiteLayout>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
-        <p className="mt-2 text-muted-foreground">
-          Things I've built, shipped, and continue to work on.
-        </p>
-      </div>
+      <PageHeading title="Projects" subtitle="Things I've built, shipped, and continue to work on." />
 
       <div className="mb-6 flex flex-wrap gap-2">
         {categories.map((c) => (
@@ -90,38 +76,7 @@ function ProjectsPage() {
 
       <div className="space-y-4">
         {visible.map((p) => (
-          <article
-            key={p.name}
-            className="grid gap-4 rounded-xl border border-border bg-card p-4 md:grid-cols-[280px_1fr] md:items-center"
-          >
-            <div className="h-36 rounded-lg bg-gradient-to-br from-primary/30 to-accent border border-border" />
-            <div>
-              <h2 className="text-lg font-semibold">{p.name}</h2>
-              <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-3 flex flex-wrap gap-4 text-xs text-primary">
-                {p.liveHref && (
-                  <a href={p.liveHref} className="inline-flex items-center gap-1 hover:underline">
-                    Live Demo <ExternalLink className="h-3 w-3" />
-                  </a>
-                )}
-                {p.githubHref && (
-                  <a href={p.githubHref} className="inline-flex items-center gap-1 hover:underline">
-                    GitHub <Github className="h-3 w-3" />
-                  </a>
-                )}
-              </div>
-            </div>
-          </article>
+          <ProjectRow key={p.name} project={p} />
         ))}
       </div>
     </SiteLayout>
