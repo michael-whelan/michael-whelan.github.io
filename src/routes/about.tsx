@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SiteLayout } from "../components/SiteLayout";
+import { SiteLayout } from "../components/templates/SiteLayout";
+import { PageHeading } from "../components/atoms/Heading";
+import { Card } from "../components/atoms/Card";
+import { TimelineItem } from "../components/molecules/TimelineItem";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -36,16 +39,10 @@ const technologies = [
 function AboutPage() {
   return (
     <SiteLayout>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">About Me</h1>
-        <p className="mt-2 text-muted-foreground">
-          A bit about my background, experience, and what drives me.
-        </p>
-      </div>
+      <PageHeading title="About Me" subtitle="A bit about my background, experience, and what drives me." />
 
-      {/* Top row: two side-by-side panels */}
       <div className="grid gap-6 md:grid-cols-2">
-        <section className="rounded-xl border border-border bg-card p-6">
+        <Card>
           <h2 className="text-lg font-semibold">My Story</h2>
           <div className="mt-3 space-y-3 text-sm text-muted-foreground">
             <p>
@@ -62,26 +59,19 @@ function AboutPage() {
               helping teams do their best work.
             </p>
           </div>
-        </section>
+        </Card>
 
-        <section className="rounded-xl border border-border bg-card p-6">
+        <Card>
           <h2 className="text-lg font-semibold">Experience</h2>
           <ul className="mt-4 space-y-4">
             {experience.map((e) => (
-              <li key={e.period} className="flex gap-3">
-                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary" />
-                <div>
-                  <div className="text-sm font-medium">{e.period}</div>
-                  <div className="text-sm text-muted-foreground">{e.role}</div>
-                </div>
-              </li>
+              <TimelineItem key={e.period} period={e.period} role={e.role} />
             ))}
           </ul>
-        </section>
+        </Card>
       </div>
 
-      {/* Bottom: single large full-width panel */}
-      <section className="mt-6 rounded-xl border border-border bg-card p-6">
+      <Card className="mt-6">
         <h2 className="text-lg font-semibold">Technologies</h2>
         <dl className="mt-4 grid gap-3 sm:grid-cols-[140px_1fr]">
           {technologies.map((t) => (
@@ -91,7 +81,7 @@ function AboutPage() {
             </div>
           ))}
         </dl>
-      </section>
+      </Card>
     </SiteLayout>
   );
 }
