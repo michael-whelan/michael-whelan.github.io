@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://michael-whelan.github.io/sitemap.xml
+Sitemap: https://michaelwhelan.dev/sitemap.xml

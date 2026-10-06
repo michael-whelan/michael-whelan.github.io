@@ -144,6 +144,39 @@ html.dark .icon-moon {
 /* ---------- Intro ---------- */
 .intro {
   padding: 2.5rem 0 0;
+  position: relative;
+}
+
+.avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  margin-bottom: 1.25rem;
+}
+
+/* Large portrait out to the right, sitting behind a narrowed bio that clips
+   its edge by about 40px. The breakpoint matches .page's own max-width: above
+   it the column is a fixed 848px, so the overlap stays put instead of growing
+   as the window narrows. Below it there's no spare room beside the text, so
+   the photo reverts to a small avatar above the name. */
+@media (min-width: 56rem) {
+  .avatar {
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    width: 360px;
+    height: 360px;
+    margin-bottom: 0;
+    z-index: 0;
+  }
+
+  .intro > :not(.avatar) {
+    position: relative;
+    z-index: 1;
+    max-width: 33rem;
+  }
 }
 
 .intro h1 {
@@ -202,9 +235,10 @@ footer h2 {
   border-color: var(--accent);
 }
 
-/* Fixed ratio keeps every card aligned, screenshot or not. */
+/* Fixed ratio keeps every card aligned, screenshot or not. A wide, short
+   banner keeps cards compact enough to see several projects per screen. */
 .shot {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 5 / 2;
   width: 100%;
   object-fit: cover;
   border-bottom: 1px solid var(--border);
@@ -228,9 +262,48 @@ footer h2 {
   padding: 1.25rem;
 }
 
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
 .card h3 {
   font-size: 1.15rem;
   font-weight: 600;
+}
+
+/* Status badges. Colour carries meaning, so the label always spells it out. */
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 0.12rem 0.55rem;
+}
+
+.badge-live {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge-wip {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Tinted fills rather than the solid light-mode ones, which glare on dark. */
+html.dark .badge-live {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+}
+
+html.dark .badge-wip {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
 }
 
 .summary {

@@ -9,18 +9,24 @@
       name="description"
       content="Michael Whelan — engineering manager and frontend engineer in Barcelona. Projects, writing and contact."
     />
-    <link rel="canonical" href="https://michael-whelan.github.io/" />
+    <link rel="canonical" href="https://michaelwhelan.dev/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://michael-whelan.github.io/" />
+    <meta property="og:url" content="https://michaelwhelan.dev/" />
     <meta property="og:title" content="Michael Whelan" />
     <meta
       property="og:description"
       content="Engineering manager and frontend engineer in Barcelona. Projects, writing and contact."
     />
+    <meta property="og:image" content="https://michaelwhelan.dev/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Michael Whelan — I build products, teams, and side projects." />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://michaelwhelan.dev/img/og.png" />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
 
     <!-- Applies the saved theme before first paint, so there is no flash. -->
@@ -55,24 +61,38 @@
 
       <!-- ===================== Intro ===================== -->
       <header class="intro">
+        <img
+          class="avatar"
+          src="/img/profile.jpg"
+          alt="Michael Whelan"
+          width="512"
+          height="512"
+        />
+
         <h1>Michael Whelan</h1>
         <p class="tagline">I build products, teams, and side projects.</p>
 
         <p>
-          I'm an engineering manager and frontend engineer. I started out in marketing in
-          Dublin, moved to London for seven years in fashion and gambling, then found coding
-          and never went back.
+          I started out making games. I ran a small indie studio while at college that hit
+          around 50,000 downloads, and built HTML5 and Unity games in London. Since then I've
+          followed the interesting problems: field-ops software in Dublin, sportsbook platforms
+          at Playtech, fashion tech at Lyst, commercial shipping and customs at Raft, and now
+          biotech as Engineering Manager at Biorce in Barcelona.
         </p>
         <p>
-          These days I lead engineering teams and build things on the side — mostly small
-          products that scratch an itch. Based in Barcelona.
+          Six industries, a lot of different stacks, one way of working: understand the problem
+          properly, plan a roadmap that holds up, and clear blockers before the team runs into
+          them.
+        </p>
+        <p>
+          When I'm not doing that, I'm building side projects. I've started hundreds and even
+          finished one or two of them.
         </p>
 
-        <!-- TODO: replace the three hrefs below with your real addresses. -->
         <nav class="links" aria-label="Profiles">
-          <a href="https://linkedin.com/in/michaelwhelan">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/michael-h-whelan-57141283/">LinkedIn</a>
           <a href="https://github.com/michael-whelan">GitHub</a>
-          <a href="mailto:you@example.com">Email</a>
+          <a href="mailto:contact@michaelwhelan.dev">Email</a>
         </nav>
       </header>
 
@@ -86,7 +106,10 @@
             <!-- Swap the placeholder for: <img src="/img/opinion8.png" alt="Opinion8 screenshot" loading="lazy" /> -->
             <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
             <div class="card-body">
-              <h3>Opinion8</h3>
+              <div class="card-head">
+                <h3>Opinion8</h3>
+                <span class="badge badge-live">Live</span>
+              </div>
               <p class="summary">Upvote, downvote and discuss any page on the web.</p>
               <p class="detail">
                 The web lost its comment section. Opinion8 is a Chrome extension and companion
@@ -100,19 +123,22 @@
                 <li>Supabase</li>
                 <li>PostgreSQL</li>
               </ul>
-              <!-- TODO: add real links, or delete this block if there's nothing to link yet.
               <div class="card-links">
-                <a href="#">Live ↗</a>
-                <a href="#">Source ↗</a>
+                <a
+                  href="https://chromewebstore.google.com/detail/opinion8/dkpoggenfikkgehbohlncdebjiabmokl"
+                  >Chrome Web Store ↗</a
+                >
               </div>
-              -->
             </div>
           </article>
 
           <article class="card">
             <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
             <div class="card-body">
-              <h3>London Rent Roulette</h3>
+              <div class="card-head">
+                <h3>London Rent Roulette</h3>
+                <span class="badge badge-wip">In progress</span>
+              </div>
               <p class="summary">Guess the rent of a real London listing. Five guesses to win.</p>
               <p class="detail">
                 A small game built out of frustration with the London rental market. You see a
@@ -127,6 +153,123 @@
               </ul>
             </div>
           </article>
+
+          <article class="card">
+            <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Sagrada Família — Our Father Door</h3>
+                <span class="badge badge-live">Live</span>
+              </div>
+              <p class="summary">
+                Find your language on Gaudí's door — a small gift to the city that became home.
+              </p>
+              <p class="detail">
+                Barcelona has become my home, and for this wonderful city I wanted to give
+                something back. The Sagrada Família's Our Father door carries the prayer in
+                fifty languages cast into the bronze, and visitors stand there hunting for
+                their own. I'm not religious —
+                it's not a devotional thing, just something nice to hand someone. Pick a
+                language and the door dims except a pool of light around that text, with the
+                glow measured off the photo so it follows the hand-cut letters rather than a
+                box.
+              </p>
+              <ul class="tags">
+                <li>JavaScript</li>
+                <li>Canvas</li>
+                <li>SVG</li>
+                <li>No build step</li>
+              </ul>
+              <div class="card-links">
+                <a href="https://michaelwhelan.dev/sagrada-door/">Live ↗</a>
+                <a href="https://github.com/michael-whelan/sagrada-door">Source ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>rn-startup-perf</h3>
+                <span class="badge badge-live">Live</span>
+              </div>
+              <p class="summary">
+                Find out where a React Native cold start actually spends its time.
+              </p>
+              <p class="detail">
+                Cold start is rarely one slow function — it's bundle bootstrap, provider trees,
+                permissions and a heavy first screen all stacked up. Metro logs won't give you
+                a timeline, so this drops marks and probes into the boot path and prints a
+                console report: which phase owned the seconds, which contexts churned, and what
+                each subtree cost to commit. Zero overhead when it's switched off.
+              </p>
+              <ul class="tags">
+                <li>React Native</li>
+                <li>Expo</li>
+                <li>TypeScript</li>
+                <li>npm</li>
+              </ul>
+              <div class="card-links">
+                <a href="https://www.npmjs.com/package/@michaelwhelan/rn-startup-perf"
+                  >npm ↗</a
+                >
+                <a href="https://github.com/michael-whelan/rn-startup-perf">Source ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Nimbus</h3>
+                <span class="badge badge-wip">In progress</span>
+              </div>
+              <p class="summary">
+                A weather app that puts UV first and lives on your home screen.
+              </p>
+              <p class="detail">
+                Most weather apps bury the UV Index several screens deep, behind animations
+                nobody asked for. Nimbus puts it next to temperature and rain, and treats the
+                home screen widget as the real interface — if it tells you whether you need
+                sunscreen and a coat before you leave the house, the app has done its job.
+                Weather data sits behind a provider abstraction, so the source can be swapped
+                or combined.
+              </p>
+              <ul class="tags">
+                <li>React Native</li>
+                <li>TypeScript</li>
+                <li>Expo</li>
+                <li>Open-Meteo</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Catalan News</h3>
+                <span class="badge badge-wip">In progress</span>
+              </div>
+              <p class="summary">
+                Catalonia's news in English, made to feel native on a phone.
+              </p>
+              <p class="detail">
+                Catalan News already does the hard part: reporting what happens across
+                Catalonia in English, which is how a lot of us here keep up while our Catalan
+                catches up. What it doesn't have is an app. This is a native front end for it —
+                the aim is something that reads like a proper news app rather than a website in
+                a browser tab.
+              </p>
+              <ul class="tags">
+                <li>React Native</li>
+                <li>TypeScript</li>
+                <li>Expo</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </main>
 
@@ -135,8 +278,8 @@
         <h2>Get in touch</h2>
         <p>Open to interesting problems, new opportunities, or just a good chat.</p>
         <nav class="links" aria-label="Contact">
-          <a href="mailto:you@example.com">you@example.com</a>
-          <a href="https://linkedin.com/in/michaelwhelan">LinkedIn</a>
+          <a href="mailto:contact@michaelwhelan.dev">contact@michaelwhelan.dev</a>
+          <a href="https://www.linkedin.com/in/michael-h-whelan-57141283/">LinkedIn</a>
           <a href="https://github.com/michael-whelan">GitHub</a>
         </nav>
         <p class="copyright">© <span id="year">2026</span> Michael Whelan</p>
