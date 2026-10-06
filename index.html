@@ -9,10 +9,10 @@
       name="description"
       content="Michael Whelan — engineering manager and frontend engineer in Barcelona. Projects, writing and contact."
     />
-    <link rel="canonical" href="https://michael-whelan.github.io/" />
+    <link rel="canonical" href="https://michaelwhelan.dev/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://michael-whelan.github.io/" />
+    <meta property="og:url" content="https://michaelwhelan.dev/" />
     <meta property="og:title" content="Michael Whelan" />
     <meta
       property="og:description"
@@ -21,6 +21,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
 
     <!-- Applies the saved theme before first paint, so there is no flash. -->
@@ -55,6 +56,10 @@
 
       <!-- ===================== Intro ===================== -->
       <header class="intro">
+        <!-- Drop a square photo at /img/profile.jpg, then replace this block with:
+             <img class="avatar" src="/img/profile.jpg" alt="Michael Whelan" width="112" height="112" /> -->
+        <div class="avatar placeholder" role="img" aria-label="Profile photo coming soon"></div>
+
         <h1>Michael Whelan</h1>
         <p class="tagline">I build products, teams, and side projects.</p>
 
@@ -68,11 +73,10 @@
           products that scratch an itch. Based in Barcelona.
         </p>
 
-        <!-- TODO: replace the three hrefs below with your real addresses. -->
         <nav class="links" aria-label="Profiles">
-          <a href="https://linkedin.com/in/michaelwhelan">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/michael-h-whelan-57141283/">LinkedIn</a>
           <a href="https://github.com/michael-whelan">GitHub</a>
-          <a href="mailto:you@example.com">Email</a>
+          <a href="mailto:contact@michaelwhelan.dev">Email</a>
         </nav>
       </header>
 
@@ -100,12 +104,12 @@
                 <li>Supabase</li>
                 <li>PostgreSQL</li>
               </ul>
-              <!-- TODO: add real links, or delete this block if there's nothing to link yet.
               <div class="card-links">
-                <a href="#">Live ↗</a>
-                <a href="#">Source ↗</a>
+                <a
+                  href="https://chromewebstore.google.com/detail/opinion8/dkpoggenfikkgehbohlncdebjiabmokl"
+                  >Chrome Web Store ↗</a
+                >
               </div>
-              -->
             </div>
           </article>
 
@@ -127,6 +131,34 @@
               </ul>
             </div>
           </article>
+
+          <article class="card">
+            <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
+            <div class="card-body">
+              <h3>Sagrada Família — Our Father Door</h3>
+              <p class="summary">
+                Find the Lord's Prayer in your own language on Gaudí's bronze door.
+              </p>
+              <p class="detail">
+                The door carries the prayer in Catalan, ringed by fifty other languages cast
+                into the bronze. Pick one and the page dims the whole door except a pool of
+                light around that text. The lettering is hand-cut, so no font rendered over a
+                box would ever land on the real glyphs — instead it measures each pixel against
+                its own local background to find the strokes, and uses that as an SVG mask so
+                the glow follows the carving itself.
+              </p>
+              <ul class="tags">
+                <li>JavaScript</li>
+                <li>Canvas</li>
+                <li>SVG</li>
+                <li>No build step</li>
+              </ul>
+              <div class="card-links">
+                <a href="https://michaelwhelan.dev/sagrada-door/">Live ↗</a>
+                <a href="https://github.com/michael-whelan/sagrada-door">Source ↗</a>
+              </div>
+            </div>
+          </article>
         </div>
       </main>
 
@@ -135,8 +167,8 @@
         <h2>Get in touch</h2>
         <p>Open to interesting problems, new opportunities, or just a good chat.</p>
         <nav class="links" aria-label="Contact">
-          <a href="mailto:you@example.com">you@example.com</a>
-          <a href="https://linkedin.com/in/michaelwhelan">LinkedIn</a>
+          <a href="mailto:contact@michaelwhelan.dev">contact@michaelwhelan.dev</a>
+          <a href="https://www.linkedin.com/in/michael-h-whelan-57141283/">LinkedIn</a>
           <a href="https://github.com/michael-whelan">GitHub</a>
         </nav>
         <p class="copyright">© <span id="year">2026</span> Michael Whelan</p>
