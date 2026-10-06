@@ -18,7 +18,12 @@
       property="og:description"
       content="Engineering manager and frontend engineer in Barcelona. Projects, writing and contact."
     />
+    <meta property="og:image" content="https://michaelwhelan.dev/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Michael Whelan — I build products, teams, and side projects." />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://michaelwhelan.dev/img/og.png" />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -97,7 +102,10 @@
             <!-- Swap the placeholder for: <img src="/img/opinion8.png" alt="Opinion8 screenshot" loading="lazy" /> -->
             <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
             <div class="card-body">
-              <h3>Opinion8</h3>
+              <div class="card-head">
+                <h3>Opinion8</h3>
+                <span class="badge badge-live">Live</span>
+              </div>
               <p class="summary">Upvote, downvote and discuss any page on the web.</p>
               <p class="detail">
                 The web lost its comment section. Opinion8 is a Chrome extension and companion
@@ -123,7 +131,10 @@
           <article class="card">
             <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
             <div class="card-body">
-              <h3>London Rent Roulette</h3>
+              <div class="card-head">
+                <h3>London Rent Roulette</h3>
+                <span class="badge badge-wip">In progress</span>
+              </div>
               <p class="summary">Guess the rent of a real London listing. Five guesses to win.</p>
               <p class="detail">
                 A small game built out of frustration with the London rental market. You see a
@@ -142,17 +153,21 @@
           <article class="card">
             <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
             <div class="card-body">
-              <h3>Sagrada Família — Our Father Door</h3>
+              <div class="card-head">
+                <h3>Sagrada Família — Our Father Door</h3>
+                <span class="badge badge-live">Live</span>
+              </div>
               <p class="summary">
-                Find the Lord's Prayer in your own language on Gaudí's bronze door.
+                Find your language on Gaudí's door — a small gift to the city that became home.
               </p>
               <p class="detail">
-                The door carries the prayer in Catalan, ringed by fifty other languages cast
-                into the bronze. Pick one and the page dims the whole door except a pool of
-                light around that text. The lettering is hand-cut, so no font rendered over a
-                box would ever land on the real glyphs — instead it measures each pixel against
-                its own local background to find the strokes, and uses that as an SVG mask so
-                the glow follows the carving itself.
+                Barcelona took me in, so I wanted to make something for it. The Sagrada
+                Família's Our Father door carries the prayer in fifty languages cast into the
+                bronze, and visitors stand there hunting for their own. I'm not religious —
+                it's not a devotional thing, just something nice to hand someone. Pick a
+                language and the door dims except a pool of light around that text, with the
+                glow measured off the photo so it follows the hand-cut letters rather than a
+                box.
               </p>
               <ul class="tags">
                 <li>JavaScript</li>
