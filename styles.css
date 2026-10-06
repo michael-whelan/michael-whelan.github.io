@@ -1,0 +1,288 @@
+/* ---------- Theme ---------- */
+:root {
+  --bg: #fcfcfd;
+  --fg: #16181d;
+  --muted: #5e636e;
+  --card: #ffffff;
+  --border: #e4e6eb;
+  --accent: #5b4bd6;
+  --radius: 12px;
+  --measure: 42rem; /* ~700px reading column */
+}
+
+html.dark {
+  --bg: #0f1116;
+  --fg: #f3f4f7;
+  --muted: #9aa0ad;
+  --card: #171a21;
+  --border: #272b35;
+  --accent: #a394ff;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: var(--measure);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+  background: var(--card);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  z-index: 10;
+}
+
+.page {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Theme toggle ---------- */
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
+}
+
+#theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+#theme-toggle:hover {
+  color: var(--fg);
+  background: var(--border);
+}
+
+#theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Show the icon for the theme you'd switch *to*. */
+.icon-sun {
+  display: none;
+}
+
+html.dark .icon-sun {
+  display: block;
+}
+
+html.dark .icon-moon {
+  display: none;
+}
+
+/* ---------- Intro ---------- */
+.intro {
+  padding: 2.5rem 0 0;
+}
+
+.intro h1 {
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 700;
+}
+
+.tagline {
+  margin: 0.75rem 0 1.5rem;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------- Projects ---------- */
+main {
+  padding: 3.5rem 0 1rem;
+}
+
+main h2,
+footer h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 42rem) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+/* Fixed ratio keeps every card aligned, screenshot or not. */
+.shot {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+}
+
+.placeholder {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--border),
+    var(--border) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  opacity: 0.5;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.summary {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.detail {
+  margin: 0.75rem 0 0;
+  font-size: 0.925rem;
+  color: var(--muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.tags li {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.1rem 0.45rem;
+}
+
+.card-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 3.5rem;
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+}
+
+footer p {
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.copyright {
+  margin: 2.5rem 0 0;
+  font-size: 0.875rem;
+}
