@@ -61,9 +61,13 @@
 
       <!-- ===================== Intro ===================== -->
       <header class="intro">
-        <!-- Drop a square photo at /img/profile.jpg, then replace this block with:
-             <img class="avatar" src="/img/profile.jpg" alt="Michael Whelan" width="112" height="112" /> -->
-        <div class="avatar placeholder" role="img" aria-label="Profile photo coming soon"></div>
+        <img
+          class="avatar"
+          src="/img/profile.jpg"
+          alt="Michael Whelan"
+          width="512"
+          height="512"
+        />
 
         <h1>Michael Whelan</h1>
         <p class="tagline">I build products, teams, and side projects.</p>
@@ -161,9 +165,10 @@
                 Find your language on Gaudí's door — a small gift to the city that became home.
               </p>
               <p class="detail">
-                Barcelona took me in, so I wanted to make something for it. The Sagrada
-                Família's Our Father door carries the prayer in fifty languages cast into the
-                bronze, and visitors stand there hunting for their own. I'm not religious —
+                Barcelona has become my home, and for this wonderful city I wanted to give
+                something back. The Sagrada Família's Our Father door carries the prayer in
+                fifty languages cast into the bronze, and visitors stand there hunting for
+                their own. I'm not religious —
                 it's not a devotional thing, just something nice to hand someone. Pick a
                 language and the door dims except a pool of light around that text, with the
                 glow measured off the photo so it follows the hand-cut letters rather than a
@@ -178,6 +183,38 @@
               <div class="card-links">
                 <a href="https://michaelwhelan.dev/sagrada-door/">Live ↗</a>
                 <a href="https://github.com/michael-whelan/sagrada-door">Source ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>rn-startup-perf</h3>
+                <span class="badge badge-live">Live</span>
+              </div>
+              <p class="summary">
+                Find out where a React Native cold start actually spends its time.
+              </p>
+              <p class="detail">
+                Cold start is rarely one slow function — it's bundle bootstrap, provider trees,
+                permissions and a heavy first screen all stacked up. Metro logs won't give you
+                a timeline, so this drops marks and probes into the boot path and prints a
+                console report: which phase owned the seconds, which contexts churned, and what
+                each subtree cost to commit. Zero overhead when it's switched off.
+              </p>
+              <ul class="tags">
+                <li>React Native</li>
+                <li>Expo</li>
+                <li>TypeScript</li>
+                <li>npm</li>
+              </ul>
+              <div class="card-links">
+                <a href="https://www.npmjs.com/package/@michaelwhelan/rn-startup-perf"
+                  >npm ↗</a
+                >
+                <a href="https://github.com/michael-whelan/rn-startup-perf">Source ↗</a>
               </div>
             </div>
           </article>
