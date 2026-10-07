@@ -251,6 +251,59 @@ footer h2 {
   border-color: var(--accent);
 }
 
+/* Uniform panels, but only once JS is there to open the modal — otherwise a
+   long blurb would be clipped with no way to read the rest. */
+html.js .card {
+  height: 32rem;
+}
+
+/* Both need min-height:0, or the flex children refuse to shrink below their
+   content and the tags and links get clipped off the bottom of the card. */
+html.js .card .card-body {
+  min-height: 0;
+}
+
+/* Soaks up the spare space so tags and links stay pinned to the bottom. */
+html.js .card .detail {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Fades the last line when there's more text behind the modal. */
+html.js .card .detail.is-clamped {
+  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+}
+
+/* Sits directly under the faded blurb, reading as the end of the text. */
+.more {
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.more:hover,
+html.js .card:hover .more {
+  text-decoration: underline;
+}
+
+/* The whole panel opens the modal, so the whole panel looks clickable. */
+html.js .card {
+  cursor: pointer;
+}
+
+html.js .card a,
+html.js .card .more {
+  cursor: pointer;
+}
+
 /* Fixed ratio keeps every card aligned, screenshot or not. A wide, short
    banner keeps cards compact enough to see several projects per screen. */
 .shot {
@@ -353,10 +406,164 @@ html.dark .badge-wip {
 
 .card-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: auto;
   padding-top: 1.25rem;
   font-size: 0.9rem;
+}
+
+/* ---------- Project modal ---------- */
+.modal {
+  width: min(44rem, calc(100vw - 2rem));
+  max-height: calc(100vh - 4rem);
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--fg);
+  overflow: hidden;
+}
+
+.modal::backdrop {
+  background: rgba(8, 9, 12, 0.66);
+}
+
+.modal-scroll {
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-body .summary {
+  font-size: 1.05rem;
+}
+
+.modal-body .detail {
+  font-size: 0.975rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(8, 9, 12, 0.6);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: rgba(8, 9, 12, 0.85);
+}
+
+/* ---------- Carousel ---------- */
+.carousel {
+  position: relative;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.carousel-viewport {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    transition: none;
+  }
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-slide .placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #fff;
+  background: rgba(8, 9, 12, 0.6);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel-btn:hover {
+  background: rgba(8, 9, 12, 0.85);
+}
+
+/* Both set display when visible, so [hidden] needs to win explicitly. */
+.carousel-btn[hidden],
+.carousel-dots[hidden] {
+  display: none;
+}
+
+.carousel-prev {
+  left: 0.6rem;
+}
+
+.carousel-next {
+  right: 0.6rem;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 0.7rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.carousel-dots button {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+}
+
+.carousel-dots button[aria-current="true"] {
+  background: #fff;
 }
 
 /* ---------- Footer ---------- */
