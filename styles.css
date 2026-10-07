@@ -8,6 +8,9 @@
   --accent: #5b4bd6;
   --radius: 12px;
   --measure: 42rem; /* ~700px reading column */
+  /* Halo that keeps the bio readable where it crosses the photo. Always the
+     opposite of the text colour, so it reads as a glow, not a smudge. */
+  --text-halo: 0 1px 3px rgba(252, 252, 253, 0.9), 0 0 10px rgba(252, 252, 253, 0.7);
 }
 
 html.dark {
@@ -17,6 +20,7 @@ html.dark {
   --card: #171a21;
   --border: #272b35;
   --accent: #a394ff;
+  --text-halo: 0 1px 3px rgba(15, 17, 22, 0.95), 0 0 12px rgba(15, 17, 22, 0.85);
 }
 
 /* ---------- Base ---------- */
@@ -184,6 +188,10 @@ html.dark .icon-moon {
   font-weight: 700;
 }
 
+.intro p {
+  text-shadow: var(--text-halo);
+}
+
 .tagline {
   margin: 0.75rem 0 1.5rem;
   font-size: 1.15rem;
@@ -218,6 +226,14 @@ footer h2 {
 @media (min-width: 42rem) {
   .grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Three across once the page hits its full width, so six projects land as
+   3x2 rather than 2x3. */
+@media (min-width: 56rem) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
