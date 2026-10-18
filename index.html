@@ -237,7 +237,12 @@
           </article>
 
           <article class="card" data-images="">
-            <div class="shot placeholder" role="img" aria-label="Screenshot coming soon"></div>
+            <img
+              class="shot"
+              src="/img/nimbus.svg"
+              alt="Nimbus banner: a UV scale beside a home screen weather widget"
+              loading="lazy"
+            />
             <div class="card-body">
               <div class="card-head">
                 <h3>Nimbus</h3>
@@ -251,8 +256,9 @@
                 nobody asked for. Nimbus puts it next to temperature and rain, and treats the
                 home screen widget as the real interface — if it tells you whether you need
                 sunscreen and a coat before you leave the house, the app has done its job.
-                Weather data sits behind a provider abstraction, so the source can be swapped
-                or combined.
+                Android for now: the widget refreshes on a background task, the last forecast
+                is cached so you never land on a spinner, and the sky behind it all follows the
+                real sun cycle wherever you're looking.
               </p>
               <ul class="tags">
                 <li>React Native</li>
