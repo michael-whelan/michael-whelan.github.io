@@ -415,7 +415,7 @@ html.dark .badge-wip {
 
 /* ---------- Project modal ---------- */
 .modal {
-  width: min(44rem, calc(100vw - 2rem));
+  width: min(48rem, calc(100vw - 2rem));
   max-height: calc(100vh - 4rem);
   padding: 0;
   border: 1px solid var(--border);
@@ -434,8 +434,12 @@ html.dark .badge-wip {
   overflow-y: auto;
 }
 
+/* The image runs full bleed; the prose stays a readable column, centred under
+   it so the leftover width reads as margin rather than a gap on one side. */
 .modal-body {
-  padding: 1.5rem;
+  max-width: calc(var(--measure) + 3.5rem);
+  margin: 0 auto;
+  padding: 1.75rem;
 }
 
 .modal-body .summary {
@@ -476,16 +480,21 @@ html.dark .badge-wip {
   border-bottom: 1px solid var(--border);
 }
 
+/* Height follows the slide on show(), so each image sets its own ratio and
+   nothing is letterboxed. */
 .carousel-viewport {
   overflow: hidden;
+  transition: height 0.3s ease;
 }
 
 .carousel-track {
   display: flex;
+  align-items: flex-start;
   transition: transform 0.3s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .carousel-viewport,
   .carousel-track {
     transition: none;
   }
@@ -493,18 +502,21 @@ html.dark .badge-wip {
 
 .carousel-slide {
   flex: 0 0 100%;
-  aspect-ratio: 16 / 10;
 }
 
+/* Cards crop their banner to the panel ratio; the modal shows the whole
+   image at its natural shape, edge to edge. */
 .carousel-slide img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
+/* Nothing intrinsic to size an empty slide against, so give it the same
+   ratio the card banners use. */
 .carousel-slide .placeholder {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 5 / 2;
 }
 
 .carousel-btn {

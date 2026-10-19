@@ -240,7 +240,7 @@
             <img
               class="shot"
               src="/img/nimbus.svg"
-              alt="Nimbus banner: a UV scale beside a home screen weather widget"
+              alt="Nimbus Weather banner: the ring-and-N mark on the app's blue sky gradient"
               loading="lazy"
             />
             <div class="card-body">
@@ -290,9 +290,9 @@
               <ul class="tags">
                 <li>React Native</li>
                 <li>Expo</li>
-                <li>Cloudflare Workers</li>
-                <li>D1</li>
-                <li>Email Routing</li>
+                <li>AWS Lambda</li>
+                <li>DynamoDB</li>
+                <li>SES</li>
               </ul>
             </div>
           </article>
@@ -386,12 +386,20 @@
         var modal = document.getElementById("project-modal");
         if (!modal || typeof modal.showModal !== "function") return;
 
+        var viewport = modal.querySelector(".carousel-viewport");
         var track = modal.querySelector(".carousel-track");
         var dots = modal.querySelector(".carousel-dots");
         var prev = modal.querySelector(".carousel-prev");
         var next = modal.querySelector(".carousel-next");
         var index = 0;
         var count = 0;
+
+        // Slides keep their own shape, so the viewport takes the height of
+        // whichever one is showing. Images are lazy, so this runs again on load.
+        function sizeViewport() {
+          var slide = track.children[index];
+          if (slide && slide.offsetHeight) viewport.style.height = slide.offsetHeight + "px";
+        }
 
         function show(i) {
           if (!count) return;
@@ -400,12 +408,15 @@
           Array.prototype.forEach.call(dots.children, function (dot, n) {
             dot.setAttribute("aria-current", n === index ? "true" : "false");
           });
+          sizeViewport();
         }
 
         function buildCarousel(images) {
           track.innerHTML = "";
           dots.innerHTML = "";
           track.style.transform = "translateX(0)";
+          viewport.style.height = ""; // drop the previous card's height
+
           count = images.length || 1;
 
           if (!images.length) {
@@ -415,13 +426,17 @@
               '<div class="placeholder" role="img" aria-label="Screenshot coming soon"></div>';
             track.appendChild(blank);
           } else {
-            images.forEach(function (src, n) {
+            var resize = function () {
+              sizeViewport();
+            };
+            images.forEach(function (image, n) {
               var slide = document.createElement("div");
               slide.className = "carousel-slide";
               var img = document.createElement("img");
-              img.src = src;
-              img.alt = "Screenshot " + (n + 1);
+              img.src = image.src;
+              img.alt = image.alt || "Screenshot " + (n + 1);
               img.loading = "lazy";
+              img.addEventListener("load", resize);
               slide.appendChild(img);
               track.appendChild(slide);
 
@@ -471,13 +486,29 @@
             links.appendChild(a.cloneNode(true));
           });
 
+          // The card's own banner leads the carousel, then anything in
+          // data-images. The card crops the banner to fit; here it's shown whole.
+          var images = (card.getAttribute("data-images") || "")
+            .split(",")
+            .map(function (s) {
+              return { src: s.trim(), alt: "" };
+            })
+            .filter(function (image) {
+              return image.src;
+            });
+
+          var banner = card.querySelector("img.shot");
+          if (banner && banner.getAttribute("src")) {
+            images.unshift({ src: banner.getAttribute("src"), alt: banner.alt });
+          }
+
+          var seen = {};
           buildCarousel(
-            (card.getAttribute("data-images") || "")
-              .split(",")
-              .map(function (s) {
-                return s.trim();
-              })
-              .filter(Boolean)
+            images.filter(function (image) {
+              if (seen[image.src]) return false;
+              seen[image.src] = true;
+              return true;
+            })
           );
 
           if (modal.open) return; // showModal() on an open dialog throws
@@ -574,7 +605,10 @@
         var resizeTimer;
         addEventListener("resize", function () {
           clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(sync, 150);
+          resizeTimer = setTimeout(function () {
+            sync();
+            if (modal.open) sizeViewport();
+          }, 150);
         });
       })();
     </script>
