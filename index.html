@@ -239,7 +239,7 @@
           <article class="card" data-images="">
             <img
               class="shot"
-              src="/img/nimbus.png"
+              src="/img/nimbus.svg"
               alt="Nimbus Weather banner: the ring-and-N mark on the app's blue sky gradient"
               loading="lazy"
             />
@@ -386,12 +386,20 @@
         var modal = document.getElementById("project-modal");
         if (!modal || typeof modal.showModal !== "function") return;
 
+        var viewport = modal.querySelector(".carousel-viewport");
         var track = modal.querySelector(".carousel-track");
         var dots = modal.querySelector(".carousel-dots");
         var prev = modal.querySelector(".carousel-prev");
         var next = modal.querySelector(".carousel-next");
         var index = 0;
         var count = 0;
+
+        // Slides keep their own shape, so the viewport takes the height of
+        // whichever one is showing. Images are lazy, so this runs again on load.
+        function sizeViewport() {
+          var slide = track.children[index];
+          if (slide && slide.offsetHeight) viewport.style.height = slide.offsetHeight + "px";
+        }
 
         function show(i) {
           if (!count) return;
@@ -400,12 +408,15 @@
           Array.prototype.forEach.call(dots.children, function (dot, n) {
             dot.setAttribute("aria-current", n === index ? "true" : "false");
           });
+          sizeViewport();
         }
 
         function buildCarousel(images) {
           track.innerHTML = "";
           dots.innerHTML = "";
           track.style.transform = "translateX(0)";
+          viewport.style.height = ""; // drop the previous card's height
+
           count = images.length || 1;
 
           if (!images.length) {
@@ -415,6 +426,9 @@
               '<div class="placeholder" role="img" aria-label="Screenshot coming soon"></div>';
             track.appendChild(blank);
           } else {
+            var resize = function () {
+              sizeViewport();
+            };
             images.forEach(function (image, n) {
               var slide = document.createElement("div");
               slide.className = "carousel-slide";
@@ -422,6 +436,7 @@
               img.src = image.src;
               img.alt = image.alt || "Screenshot " + (n + 1);
               img.loading = "lazy";
+              img.addEventListener("load", resize);
               slide.appendChild(img);
               track.appendChild(slide);
 
@@ -590,7 +605,10 @@
         var resizeTimer;
         addEventListener("resize", function () {
           clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(sync, 150);
+          resizeTimer = setTimeout(function () {
+            sync();
+            if (modal.open) sizeViewport();
+          }, 150);
         });
       })();
     </script>

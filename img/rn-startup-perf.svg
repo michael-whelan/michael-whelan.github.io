@@ -1,9 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="400" viewBox="0 0 1000 400">
+<!--
+  16:9 master. The centre band (y 0–400) is what the card crops to at 5:2;
+  the console header above and the summary below only appear in the modal.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="563" viewBox="0 -82 1000 563">
   <title>rn-startup-perf — startup profiling for React Native</title>
-  <rect width="1000" height="400" fill="#0f1117"/>
+  <rect y="-82" width="1000" height="563" fill="#0f1117"/>
   <g stroke="#1c2030" stroke-width="1">
     <path d="M330 206V338M481 206V338M633 206V338M784 206V338M936 206V338"/>
   </g>
+
+  <!-- Extra header: only visible in the modal. -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="16">
+    <text x="64" y="-44" fill="#4b5569">[startup] cold start · pixel 8 · release</text>
+    <text x="64" y="-16" fill="#3ddc97">▸</text>
+    <text x="88" y="-16" fill="#8b93a7">profiling enabled — __DEV__</text>
+  </g>
+  <path d="M64 4H936" stroke="#1c2030" stroke-width="1"/>
 
   <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">
     <text x="64" y="104" font-size="56" font-weight="700" fill="#f2f4f8">rn-startup-perf</text>
@@ -28,4 +40,19 @@
     <text x="88" y="376" fill="#c7cdd9">npm i @michaelwhelan/rn-startup-perf</text>
   </g>
   <text x="912" y="198" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" fill="#8b93a7">interactive</text>
+
+  <!-- Extra summary: only visible in the modal. -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="16">
+    <text x="64" y="416" fill="#4b5569">context churn</text>
+    <text x="330" y="416" fill="#f5a524">WeatherProvider</text>
+    <text x="560" y="416" fill="#8b93a7">11 commits · 7 parent-only</text>
+
+    <text x="64" y="446" fill="#4b5569">slowest subtree</text>
+    <text x="330" y="446" fill="#61dafb">&lt;HomeScreen /&gt;</text>
+    <text x="560" y="446" fill="#8b93a7">412ms across 3 commits</text>
+
+    <text x="64" y="476" fill="#4b5569">interactive at</text>
+    <text x="330" y="476" fill="#3ddc97">1,284ms</text>
+    <text x="560" y="476" fill="#8b93a7">location owns 38% of it</text>
+  </g>
 </svg>
