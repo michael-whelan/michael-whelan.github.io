@@ -414,10 +414,8 @@ html.dark .badge-wip {
 }
 
 /* ---------- Project modal ---------- */
-/* Wide enough that a 5:2 banner renders big at full bleed — 64rem also shows
-   the 1024px-wide Nimbus graphic at native size, with no upscaling. */
 .modal {
-  width: min(64rem, calc(100vw - 2rem));
+  width: min(48rem, calc(100vw - 2rem));
   max-height: calc(100vh - 4rem);
   padding: 0;
   border: 1px solid var(--border);
