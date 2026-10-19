@@ -239,8 +239,8 @@
           <article class="card" data-images="">
             <img
               class="shot"
-              src="/img/nimbus.svg"
-              alt="Nimbus banner: a UV scale beside a home screen weather widget"
+              src="/img/nimbus.png"
+              alt="Nimbus Weather banner: the ring-and-N mark on the app's blue sky gradient"
               loading="lazy"
             />
             <div class="card-body">
@@ -415,12 +415,12 @@
               '<div class="placeholder" role="img" aria-label="Screenshot coming soon"></div>';
             track.appendChild(blank);
           } else {
-            images.forEach(function (src, n) {
+            images.forEach(function (image, n) {
               var slide = document.createElement("div");
               slide.className = "carousel-slide";
               var img = document.createElement("img");
-              img.src = src;
-              img.alt = "Screenshot " + (n + 1);
+              img.src = image.src;
+              img.alt = image.alt || "Screenshot " + (n + 1);
               img.loading = "lazy";
               slide.appendChild(img);
               track.appendChild(slide);
@@ -471,13 +471,29 @@
             links.appendChild(a.cloneNode(true));
           });
 
+          // The card's own banner leads the carousel, then anything in
+          // data-images. The card crops the banner to fit; here it's shown whole.
+          var images = (card.getAttribute("data-images") || "")
+            .split(",")
+            .map(function (s) {
+              return { src: s.trim(), alt: "" };
+            })
+            .filter(function (image) {
+              return image.src;
+            });
+
+          var banner = card.querySelector("img.shot");
+          if (banner && banner.getAttribute("src")) {
+            images.unshift({ src: banner.getAttribute("src"), alt: banner.alt });
+          }
+
+          var seen = {};
           buildCarousel(
-            (card.getAttribute("data-images") || "")
-              .split(",")
-              .map(function (s) {
-                return s.trim();
-              })
-              .filter(Boolean)
+            images.filter(function (image) {
+              if (seen[image.src]) return false;
+              seen[image.src] = true;
+              return true;
+            })
           );
 
           if (modal.open) return; // showModal() on an open dialog throws

@@ -496,10 +496,12 @@ html.dark .badge-wip {
   aspect-ratio: 16 / 10;
 }
 
+/* Cards crop their banner to the panel ratio; the modal shows the whole
+   image instead, so a wide banner letterboxes rather than losing its edges. */
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .carousel-slide .placeholder {
